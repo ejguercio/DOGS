@@ -1,4 +1,4 @@
-const formatData = (array) =>
+const formatDogApi = (array) =>
     array.map((element) => {
         return {
             id: element.id,
@@ -6,9 +6,10 @@ const formatData = (array) =>
             height: element.height.metric,
             weight: element.weight.metric,
             life_span: element.life_span,
+            image: element.image.url,
             temperament: element.temperament,
             created: false
         }
     });
 
-module.exports = formatData
+module.exports = formatDogApi 
