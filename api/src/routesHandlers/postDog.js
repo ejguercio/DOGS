@@ -1,18 +1,21 @@
 const { Dog, Temperament } = require("../db");
 
-const createDog = async (name, height, weight, life_span, temperamentId) => {
+const createDog = async (name, height, weight, life_span, temperament) => {
     const newDog = await Dog.create({ name, height, weight, life_span })
     
-    const temperament = await Temperament.findByPk(temperamentId)
-    await newDog.addTemperament(temperament);
+    temperament = temperament.split(", ") //provisorio porque aun no se que como lo voy a mandar del front
+    temperament.map(async (element) => {
+        const eachTemperament = await Temperament.findOne({ where: { name: element } })
+        await newDog.addTemperament(eachTemperament);
+    })
     return newDog
 };
 
 
 const postDog = async (req, res) => {
     try {
-        const { name, height, weight, life_span, temperamentId } = req.body;
-        const newDog = await createDog(name, height, weight, life_span, temperamentId)
+        const { name, height, weight, life_span, temperament } = req.body;
+        const newDog = await createDog(name, height, weight, life_span, temperament)
         return res.status(200).json(newDog);
     } catch (error) {
         return res.status(400).json({ error: error.message })

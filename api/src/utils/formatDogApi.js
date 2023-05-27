@@ -1,13 +1,13 @@
-const formatDogApi = (array) =>
-    array.map((element) => {
+const formatDogApi = (arrDogs) =>
+    arrDogs.map((dog) => {
         return {
-            id: element.id,
-            name: element.name,
-            height: element.height.metric,
-            weight: element.weight.metric,
-            life_span: element.life_span,
-            image: element.image.url,
-            temperament: element.temperament,
+            id: dog.id,
+            name: dog.name,
+            height: `${dog.height.metric} cm`,
+            weight: `${dog.weight.metric} kg`,
+            life_span: dog.life_span,
+            image: dog.image.url,
+            temperament: dog.temperament,
             created: false
         }
     });
