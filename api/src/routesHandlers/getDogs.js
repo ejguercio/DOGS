@@ -8,36 +8,42 @@ const { Op } = require('sequelize');
 const MIN_LONG_NAME = 2;
 
 const getAlldogs = async () => { //busco dogs en la api y en la base de datos y los junto
-    let dbDogs = await Dog.findAll({
+    const dbData = await Dog.findAll({
         include: {
             model: Temperament,
             attributes: ['name'],
             through: { attributes: [] },
         }
     });
-    dbDogs = formatDogDb(dbDogs)
+    const dbDogs = formatDogDb(dbData)
 
     const apiData = (await axios.get(`${URL}`)).data
-    const apiDogs = formatDogApi(apiData) //aca voy a darle forma a la data de la API
+    const apiDogs = formatDogApi(apiData)
     return [...dbDogs, ...apiDogs]
 };
 
 const getDogByName = async (name) => {
-    if (name.length >= MIN_LONG_NAME) { //valido que se busque un nombre con al menos dos caracteres
-        const dbDog = await Dog.findAll({
-            where: {
-                name: { [Op.iLike]: `%${name}%` } //Op.iLike busco tanto min como may y % % busco en todo value de name dicho nombre
-            }
-        })
+    if (name.length < MIN_LONG_NAME) throw Error("el nombre a buscar deberia tener al menos 2 caracteres")
+    //valido que se busque un nombre con al menos dos caracteres
+    
+    const dbData = await Dog.findAll({
+        where: {
+            name: { [Op.iLike]: `%${name}%` } //Op.iLike busco tanto min como may y % % busco en todo value de name dicho nombre
+        },
+        include: { //los temperamentos son incluidos en un array de objs
+            model: Temperament,
+            attributes: ['name'],
+            through: { attributes: [] },
+        }
+    })
+    const dbDogs = formatDogDb(dbData);
 
-        const apiData = (await axios.get(`${URL}`)).data
-        let apiDogs = formatDogApi(apiData) //aca voy a darle forma a la data de la API
-        apiDogs = apiDogs.filter((perro) => perro.name.toLowerCase().includes(name.toLowerCase()))
+    const apiData = (await axios.get(`${URL}`)).data
+    let apiDogs = formatDogApi(apiData) //aca voy a darle forma a la data de la API
+    apiDogs = apiDogs.filter((perro) => perro.name.toLowerCase().includes(name.toLowerCase()))
 
-        return [...dbDog, ...apiDogs]
-    } else {
-        throw Error("el nombre a buscar deberia tener al menos 2 caracteres")
-    }
+    return [...dbDogs, ...apiDogs]
+
 };
 
 const getDogs = async (req, res) => { //si tengo query con nombre busco traigo perro por nombre sino traigo todos

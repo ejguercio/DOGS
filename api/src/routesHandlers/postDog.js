@@ -1,6 +1,8 @@
 const { Dog, Temperament } = require("../db");
 
 const createDog = async (name, height, weight, life_span, temperament) => {
+    
+    if(!name || !height || !weight || !life_span || !temperament) throw Error("Faltan datos")
     const newDog = await Dog.create({ name, height, weight, life_span })
     
     temperament = temperament.split(", ") //provisorio porque aun no se que como lo voy a mandar del front
@@ -8,9 +10,9 @@ const createDog = async (name, height, weight, life_span, temperament) => {
         const eachTemperament = await Temperament.findOne({ where: { name: element } })
         await newDog.addTemperament(eachTemperament);
     })
-    return newDog
+    return newDog 
 };
-
+//luego message perro creado con exito
 
 const postDog = async (req, res) => {
     try {
