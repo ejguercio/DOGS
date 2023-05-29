@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    background-color: #62A388;
+    height: 50px;
+    color: aliceblue;
+    
+}

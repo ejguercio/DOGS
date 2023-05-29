@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(151,206,76, 0);
+    height: auto;
+    width: 90%;
+    margin: 20px auto;
+}
