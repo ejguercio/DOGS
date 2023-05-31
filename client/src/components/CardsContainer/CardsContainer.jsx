@@ -1,13 +1,15 @@
 import Card from "../Card/Card";
 import css from "./CardsContainer.module.css"
 import { useSelector } from "react-redux";
+//import { useState } from "react";
 
 const CardsContainer = () => {
-    const arrDogs= useSelector(state=>state.dogs)//prueba provisoria
-
+    const arrDogs= useSelector(state=>state.dogs)
+    const arrLimitadoPrueba= arrDogs.slice(0,16);//limito porque aun no tengo paginado
+    
     return (
         <div className={css.container}>
-            {arrDogs.map(dog => {
+            {arrLimitadoPrueba.map(dog => {
                 return <Card
                     key={dog.id}// para uso interno de React, no la veremos
                     id={dog.id}

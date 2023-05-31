@@ -7,15 +7,21 @@
     height: 300px;
     margin: 10px;
     border-radius: 10px;
-    background-color: #62A388;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+    background-color: rgba(98, 163, 136,0.9);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
     transition: all 0.3s ease-out;
+}
+.container:hover{
+    background-color: rgba(98, 163, 136,0.5);
+    box-shadow: 3px 3px 3px #055E68;
+    scale: 1.02 ;
 }
 .info{
     color:#B9D2D2;
     background-color: #343434;
+    font-family: rowdies;
     font-size: 15px;
-    padding: 2px 0px;
+    padding: 2px 1px;
     width: 95%;
     margin: auto;
     border-radius: 10px;

@@ -1,0 +1,25 @@
+.title {
+    color: rgb(98, 163, 136);
+    font-family: rowdies;
+    font-size: 5rem;
+    margin: 10px;
+    text-shadow: 3px 3px white;
+  }
+
+.button {
+    background-color: rgb(52, 52, 52);
+    color: rgb(185, 210, 210);
+    padding: .3em;
+    font-family: rowdies;
+    font-size: 4rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+    transition:  0.3s ease;
+  }
+  .button:hover {
+    background-color: rgb(185, 210, 210);
+    color: white;
+    transform: scale(1.05);
+  }

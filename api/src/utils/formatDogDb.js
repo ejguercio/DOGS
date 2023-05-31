@@ -7,7 +7,7 @@ const formatDogDb = (arrDogs) =>
             weight: `${dog.weight} kg`,
             life_span: dog.life_span,
             image: dog.image,
-            temperaments: dog.temperaments.map(obj => obj.name).join(', '),
+            temperament: dog.temperaments.map(obj => obj.name).join(', '),
             created: dog.created
         }
     });
