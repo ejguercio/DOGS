@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 //import { useState } from "react";
 
 const CardsContainer = () => {
-    const arrDogs= useSelector(state=>state.dogs)
-    const arrLimitadoPrueba= arrDogs.slice(0,16);//limito porque aun no tengo paginado
-    
+    const arrDogs = useSelector(state => state.dogs);
+    const arrLimitadoPrueba = arrDogs.slice(0, 8);//limito porque aun no tengo paginado
+
     return (
         <div className={css.container}>
             {arrLimitadoPrueba.map(dog => {

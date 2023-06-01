@@ -11,12 +11,23 @@ const loadTemperaments = async () => {
             : "No info").map(dog => dog?.split(', '));
 
         let allTemperaments = [...new Set(temperamentsRaw.flat())];//quedarme solo con temperamentos no repetidos de la data cruda
+        allTemperaments.sort((a, b) => { //ordeno por nombre antes de cargarlos en la DB
+            if (a< b) {
+                return -1;
+            }
+            if (a > b) {
+                return 1;
+            }
+            return 0;
+        });
         allTemperaments.forEach(temp => {
             if (temp) Temperament.findOrCreate({ where: { name: temp } }) //recorro cada temperamento y lo voy metiendo en la db si es que no existe
         });
     }
     //Temperament.destroy({ where: {}, truncate: true }) //vaciar tabla (prueba)
-    return await Temperament.findAll(); //retorno todos los temperamentos que ya quedaron cargados en la DB
+    const arrTemperaments = await Temperament.findAll(); //retorno todos los temperamentos que ya quedaron cargados en la DB
+    return arrTemperaments.map(temp => temp.name);
+
 };
 
 const getTemperaments = async (req, res) => {

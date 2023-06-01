@@ -1,9 +1,10 @@
 //import arrDogs from "../utils/arrDogs";
-import { CLEAN_DETAIL, GET_DOGS, GET_DOG_BY_ID } from "./actions-type";
+import { CLEAN_DETAIL, GET_DOGS, GET_DOG_BY_ID, GET_TEMPERAMENTS } from "./actions-type";
 
 const initialState = {
     dogs: [],
-    dog:{}
+    dog:{},
+    temperaments: []
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -22,6 +23,11 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 dog: payload
+            }
+        case GET_TEMPERAMENTS:
+            return{
+                ...state,
+                temperaments: payload
             }
 
         

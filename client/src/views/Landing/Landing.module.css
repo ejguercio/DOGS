@@ -19,7 +19,7 @@
     transition:  0.3s ease;
   }
   .button:hover {
-    background-color: rgb(185, 210, 210);
+    background-color: rgb(5, 94, 104);
     color: white;
     transform: scale(1.05);
   }

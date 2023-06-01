@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Card = ({ id, image, name, temperament, weight }) => {
 
     return (
-        <NavLink to={`/detail/${id}`}>
+        <NavLink className={css.link} to={`/detail/${id}`}> 
             <div className={css.container}>
                 <h2 className={css.info}>{name}</h2>
                 <h2 className={css.info}>{weight}</h2>

@@ -6,15 +6,15 @@ import css from "./Detail.module.css";
 
 
 const Detail = () => {
-    const { detailId } = useParams();
+    const { detailId } = useParams(); //obtengo la url dinamica que representa el id
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(clean_detail())
+        dispatch(clean_detail())//me aseguro de limpiar siempre el componente al montarlo
         dispatch(get_dog_by_id(detailId))
     }, [dispatch, detailId])
 
-    const dog = useSelector(state => state.dog);
+    const dog = useSelector(state => state.dog); //accedo al estado global donde guardo 1 dog buscado por id
 
     return (
         <div className={css.container}>
