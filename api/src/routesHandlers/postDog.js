@@ -8,8 +8,9 @@ const createDog = async (name, height, weight, life_span, temperament) => {
     const newDog = await Dog.create({ name, height, weight, life_span, image })
     
     //temperament = temperament.split(", ") //provisorio porque aun no se que como lo voy a mandar del front
-    temperament.map(async (element) => {
-        const eachTemperament = await Temperament.findOne({ where: { name: element } })
+    temperament=[...new Set(temperament)];// en caso de que me llegaran temperamentos repetidos
+    temperament.map(async (temp) => {
+        const eachTemperament = await Temperament.findOne({ where: { name: temp } })
         await newDog.addTemperament(eachTemperament);
     })
     return newDog 

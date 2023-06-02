@@ -1,7 +1,7 @@
 import axios from "axios";
+//hago unos ajustes en el formato que voy a enviar la informacion y realizo mi metodo POST
 
-export const formatAndPost = async ({ name, heightMin, heightMax, weightMin, weightMax, lifeMin, lifeMax }, selectedTemp) => {
-
+export const formatAndPost = async ({ name, heightMin, heightMax, weightMin, weightMax, lifeMin, lifeMax }, selectedTemp) => { 
     try {
         const newDog = {
             name: name,
@@ -14,7 +14,6 @@ export const formatAndPost = async ({ name, heightMin, heightMax, weightMin, wei
         const response = await axios.post(endpoint, newDog)
         alert(response.data)
     } catch (error) {
-        alert(error.message)
+        alert(error.response.data.error)
     }
-
 };

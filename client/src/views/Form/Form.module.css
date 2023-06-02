@@ -11,7 +11,10 @@
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
     color:aliceblue;
 }
-
+.errors{
+    display: block;
+    color: red;
+}
 .labels{
     padding: 5px;
 }
@@ -19,7 +22,7 @@
 .inputs{
     width: 100px;
     padding: 5px;
-    margin: 5px;
+    margin: 20px 10px;
     border-radius: 10px;
     border-style: none;
 }

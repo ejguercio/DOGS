@@ -5,7 +5,7 @@ const formatDogDb = (arrDogs) =>
             name: dog.name,
             height: `${dog.height} cm`,
             weight: `${dog.weight} kg`,
-            life_span: dog.life_span,
+            life_span: `${dog.life_span} years`,
             image: dog.image,
             temperament: dog.temperaments.map(obj => obj.name).join(', '),
             created: dog.created

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { get_temperaments } from "../../redux/actions";
 import { formatAndPost } from "./formatAndPost";
+import validation from "./validation";
 
 const Form = () => {
     //estado global con los temperamentos que tiene mi DB y los traere para mapearlos en mi SELECT options
@@ -23,6 +24,16 @@ const Form = () => {
         lifeMax: ""
     })
 
+    const [errors, setErrors] = useState({
+        name: "",
+        heightMin: "",
+        heightMax: "",
+        weightMin: "",
+        weightMax: "",
+        lifeMin: "",
+        lifeMax: ""
+    })
+
     //seteo el estado local con los temperamentos que voy seleccionando y los demas estados el input
     const handleSelectChange = (event) => {
         const selectedOp = Array.from(event.target.selectedOptions, (option) => option.value); //recibe un iterable y permite mapear para obtener nueva instancia
@@ -34,38 +45,44 @@ const Form = () => {
         const value = event.target.value;
 
         setInputsForm({ ...inputsForm, [property]: value })
+        setErrors(validation({ ...inputsForm, [property]: value }))
     };
-
-    const handleSubmit= (event)=>{
+    
+    const handleSubmit = (event) => {
         event.preventDefault();
-        formatAndPost(inputsForm, selectedTemperaments)
+        (Object.keys(errors).length === 0) && formatAndPost(inputsForm, selectedTemperaments) //si el objeto errors luego de validation no tiene keys es porque no hya err
+        //if (selectedTemperaments.length==0) alert("no asigno ningun temperamento")//provisorio
+
     };
 
     const temperaments = useSelector(state => state.temperaments)//array con todos los temperamentos de la DB
     return (
         <form className={css.container} onSubmit={handleSubmit} >
-            <div>
+            <div className={css.containerByInput}>
                 <label className={css.labels}>Name</label>
-                <input className={css.inputs} value={inputsForm.name} name="name" onChange={handleInputChange} />
+                <input className={css.inputs} value={inputsForm.name} name="name" maxLength={20} onChange={handleInputChange} />
+                <label className={css.errors}>{errors.name}</label>
             </div>
             <div>
                 <label className={css.labels}>Height min.</label>
-                <input className={css.inputs} value={inputsForm.heightMin} name="heightMin" onChange={handleInputChange} />
+                <input className={css.inputs} value={inputsForm.heightMin} name="heightMin" maxLength={2} type="text" pattern="[0-9]*"  onChange={handleInputChange} />
                 <label className={css.labels}> max.</label>
-                <input className={css.inputs} value={inputsForm.heightMax} name="heightMax" onChange={handleInputChange} />
+                <input className={css.inputs} value={inputsForm.heightMax} name="heightMax" maxLength={3} onChange={handleInputChange} />
             </div>
             <div>
                 <label className={css.labels}>Weight min.</label>
-                <input className={css.inputs} value={inputsForm.weightMin} name="weightMin" onChange={handleInputChange} />
+                <input className={css.inputs} value={inputsForm.weightMin} name="weightMin" maxLength={2} onChange={handleInputChange} />
                 <label className={css.labels}>max.</label>
-                <input className={css.inputs} value={inputsForm.weightMax} name="weightMax" onChange={handleInputChange} />
+                <input className={css.inputs} value={inputsForm.weightMax} name="weightMax" maxLength={3} onChange={handleInputChange} />
             </div>
             <div>
                 <label className={css.labels}>Life span min.</label>
-                <input className={css.inputs} value={inputsForm.lifeMin} name="lifeMin" onChange={handleInputChange} />
+                <input className={css.inputs} value={inputsForm.lifeMin} name="lifeMin" maxLength={2} onChange={handleInputChange} />
                 <label className={css.labels}>max.</label>
-                <input className={css.inputs} value={inputsForm.lifeMax} name="lifeMax" onChange={handleInputChange} />
+                <input className={css.inputs} value={inputsForm.lifeMax} name="lifeMax" maxLength={2} onChange={handleInputChange} />
             </div>
+            <label className={css.errors} >{errors.metrics}</label>
+            
             <select className={css.select} multiple value={selectedTemperaments} onChange={handleSelectChange}>
                 {temperaments.map((option, index) => (
                     <option key={index} value={option}>
