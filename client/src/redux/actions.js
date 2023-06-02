@@ -1,4 +1,4 @@
-import { GET_DOGS, GET_DOG_BY_ID, CLEAN_DETAIL, GET_TEMPERAMENTS, GET_DOGS_BY_NAME} from "./actions-type";
+import { GET_DOGS, GET_DOG_BY_ID, CLEAN_DETAIL, GET_TEMPERAMENTS, GET_DOGS_BY_NAME } from "./actions-type";
 import axios from "axios";
 
 export const get_dogs = () => {
@@ -34,16 +34,10 @@ export const get_temperaments = () => {
 };
 
 
-export const get_dogs_by_name=(name)=>{  
-    try {
-        
-        const endpoint=`http://localhost:3001/dogs?name=${name}`
-        return async (dispatch) =>{
-            const dogs = (await axios.get(endpoint)).data
-            return dispatch({type: GET_DOGS_BY_NAME, payload: dogs})
-        };
-    } catch (error) {
-        console.log(error)
-    }
-    
+export const get_dogs_by_name = (name) => {
+    const endpoint = `http://localhost:3001/dogs?name=${name}`
+    return async (dispatch) => {
+        const dogs = (await axios.get(endpoint)).data
+        return dispatch({ type: GET_DOGS_BY_NAME, payload: dogs })
+    };
 };

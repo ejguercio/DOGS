@@ -9,4 +9,7 @@
     padding: 5px;
     border-radius: 5px;
     border-style: none;
+    cursor: pointer;
+    font-family: rowdies;
+    background-color: #B9D2D2;
 }

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { get_temperaments } from "../../redux/actions";
 import { formatAndPost } from "./formatAndPost";
 import validation from "./validation";
+import {cleanForm} from "./cleanForm";
 
 const Form = () => {
     //estado global con los temperamentos que tiene mi DB y los traere para mapearlos en mi SELECT options
@@ -52,6 +53,7 @@ const Form = () => {
         event.preventDefault();
         (Object.keys(errors).length === 0) && formatAndPost(inputsForm, selectedTemperaments) //si el objeto errors luego de validation no tiene keys es porque no hya err
         //if (selectedTemperaments.length==0) alert("no asigno ningun temperamento")//provisorio
+        cleanForm(setInputsForm, setSelectedTemperaments);
 
     };
 
