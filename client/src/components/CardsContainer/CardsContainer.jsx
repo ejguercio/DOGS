@@ -8,20 +8,21 @@ const CardsContainer = () => {
     //estado local
     const [currentPage, setCurrentPage] = useState(1);
     //estado global
-    const arrDogs = useSelector(state => state.filteredDogs);
+    const filteredDogs = useSelector(state => state.filteredDogs);
     
     useEffect(() => {
         setCurrentPage(1); // Reiniciar currentPage a 1 cuando filteredDogs cambie
-      }, [arrDogs]);
+        console.log("se disparo UseEffect")
+      }, [filteredDogs]);
 
     //variables necesarias para el paginado
     const ITEMS_PER_PAGE = 8;
     const indexLastItem = currentPage * ITEMS_PER_PAGE;
     const indexFirstItem = indexLastItem - ITEMS_PER_PAGE;
-    const totalPages = Math.ceil(arrDogs.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(filteredDogs.length / ITEMS_PER_PAGE);
   
     //items que va a ir mosrando el contenedor de cards
-    const currentItems = arrDogs.slice(indexFirstItem, indexLastItem);
+    const currentItems = filteredDogs.slice(indexFirstItem, indexLastItem);
 
     const handlePrevious = () => {
         (currentPage > 1) && setCurrentPage(currentPage - 1)
