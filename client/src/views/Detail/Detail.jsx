@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router';
 import { get_dog_by_id, clean_detail } from "../../redux/actions";
 import css from "./Detail.module.css";
 
@@ -8,14 +9,17 @@ import css from "./Detail.module.css";
 const Detail = () => {
     const { detailId } = useParams(); //obtengo la url dinamica que representa el id
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(clean_detail())//me aseguro de limpiar siempre el componente al montarlo
         dispatch(get_dog_by_id(detailId))
-    }, [dispatch, detailId])
+    }, [detailId])
 
     const dog = useSelector(state => state.dog); //accedo al estado global donde guardo 1 dog buscado por id
-
+    const handleBack=()=>{
+        navigate(-1)
+    };
     return (
         <div className={css.container}>
             <div className={css.containerInfo}>
@@ -29,6 +33,7 @@ const Detail = () => {
             <div>
                 <img className={css.image} src={dog.image} alt='' />
             </div>
+            <button onClick={handleBack}>back</button>
         </div>
     )
 };

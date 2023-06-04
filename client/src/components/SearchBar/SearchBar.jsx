@@ -18,7 +18,7 @@ const SearchBar = () => {
 
     return (
         <div className={css.container}>
-            <input className={css.input} placeholder="Search by name" value={name} onChange={handleChange}></input>
+            <input className={css.input} placeholder="Search by name" maxLength={20} value={name} onChange={handleChange}></input>
             <button className={css.button} onClick={() => { searchByName(name); setName("") }} >SEARCH</button>
         </div>
     )

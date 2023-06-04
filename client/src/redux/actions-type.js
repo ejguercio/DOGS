@@ -3,5 +3,6 @@ export const GET_DOG_BY_ID="GET_DOG_BY_ID";
 export const CLEAN_DETAIL="CLEAN_DETAIL";
 export const GET_TEMPERAMENTS="GET_TEMPERAMENTS";
 export const GET_DOGS_BY_NAME="GET_DOGS_BY_NAME";
-
+export const FILTER_DOGS="FILTER_DOGS";
+export const ORDER_DOGS="ORDER_DOGS";
 

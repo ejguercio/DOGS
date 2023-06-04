@@ -11,7 +11,7 @@ const Form = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(get_temperaments())
-    }, [dispatch])
+    }, [])
 
     //estados locales
     const [selectedTemperaments, setSelectedTemperaments] = useState([]);

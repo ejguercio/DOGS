@@ -4,7 +4,7 @@
     justify-content: center;
     background-color: rgba(151,206,76, 0);
     height: auto;
-    min-height: 700px;
+    min-height: 650px;
     width: 60%;
     margin: 20px auto;
 }
@@ -13,12 +13,13 @@
     background-color: rgba(52, 52, 52, 0.8);
     border-radius: 10px;
     font-family: rowdies;
+    width: 300px;
+    margin: auto;
 }
 .labelPage{
     color: #B9D2D2;
     display: block;
-    font-size: 30px;
-    
+    font-size: 30px;  
 }
 .buttons{
     font-family: rowdies;
