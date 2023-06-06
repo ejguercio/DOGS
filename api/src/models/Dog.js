@@ -26,6 +26,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    maxWeight:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     life_span: {
       type: DataTypes.STRING,
       allowNull: false,

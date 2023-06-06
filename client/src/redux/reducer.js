@@ -48,17 +48,10 @@ const reducer = (state = initialState, { type, payload }) => {
         case ORDER_DOGS:
             let ordered = [...state.filteredDogs]
             //trabajo con esa copia porque si uso el estado directo, el useEffect no me renderizaba los cambios en tiempo real
-            ordered = (payload === "OrderAsc")? ordered.sort((a, b) => a.name.localeCompare(b.name))
-                    :  ordered.sort((a, b) => b.name.localeCompare(a.name))
-                //in progress
-            //  :ordered.forEach((dog) => {
-            //     const matches = dog.weight.match(/(\d+)\s*(?:-\s*(\d+)\s*)?(?:kg)?/);
-            //     if (matches) {
-            //       const maxWeight = parseInt(matches[2] || matches[1]);
-            //       dog.maxWeight = maxWeight;
-            //     }
-            //   });
-            //   ordered.sort((a, b) => a.id - b.id)
+            ordered = (payload === "OrderA")? ordered.sort((a, b) => a.name.localeCompare(b.name))
+                        :(payload === "OrderD")? ordered.sort((a, b) => b.name.localeCompare(a.name))
+                        : ordered.sort((a, b) => a.maxWeight - b.maxWeight)
+
            return {
              ...state,
              filteredDogs: ordered

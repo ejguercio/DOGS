@@ -3,15 +3,15 @@ import { useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { get_dogs } from "../../redux/actions";
 import { useSelector } from "react-redux";
-let dogsFetched=false;
+//let dogsFetched=false;
 const Home= ()=>{
     const dispatch= useDispatch();
     
     useEffect(()=>{
-        if (dogsFetched===false){
+        //if (dogsFetched===false){
             dispatch(get_dogs())
-            dogsFetched=true
-        }
+            //dogsFetched=true
+        //}
     },[])
     
     return(

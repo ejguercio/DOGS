@@ -1,7 +1,7 @@
 import css from "./Form.module.css"
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { get_temperaments } from "../../redux/actions";
+import { get_temperaments, get_dogs } from "../../redux/actions";
 import { formatAndPost } from "./formatAndPost";
 import validation from "./validation";
 import {cleanForm} from "./cleanForm";
@@ -11,7 +11,7 @@ const Form = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(get_temperaments())
-    }, [])
+    }, [dispatch])
 
     //estados locales
     const [selectedTemperaments, setSelectedTemperaments] = useState([]);
@@ -54,7 +54,7 @@ const Form = () => {
         (Object.keys(errors).length === 0) && formatAndPost(inputsForm, selectedTemperaments) //si el objeto errors luego de validation no tiene keys es porque no hya err
         //if (selectedTemperaments.length==0) alert("no asigno ningun temperamento")//provisorio
         cleanForm(setInputsForm, setSelectedTemperaments);
-
+        //dispatch(get_dogs());
     };
 
     const temperaments = useSelector(state => state.temperaments)//array con todos los temperamentos de la DB

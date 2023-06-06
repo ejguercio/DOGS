@@ -8,8 +8,6 @@ export const get_dogs = () => {
         const dogs = (await axios.get(endpoint)).data
         return dispatch({ type: GET_DOGS, payload: dogs });
     };
-
-
 };
 
 export const get_dog_by_id = (id) => {

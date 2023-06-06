@@ -7,6 +7,7 @@ export const formatAndPost = async ({ name, heightMin, heightMax, weightMin, wei
             name: name,
             height: `${heightMin} - ${heightMax}`,
             weight: `${weightMin} - ${weightMax}`,
+            maxWeight: parseInt(weightMax),
             life_span: `${lifeMin} - ${lifeMax}`,
             temperament: selectedTemp
         }
