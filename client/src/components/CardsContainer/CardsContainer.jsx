@@ -3,7 +3,6 @@ import css from "./CardsContainer.module.css"
 import { useSelector } from "react-redux";
 import { useState, useEffect} from "react";
 
-
 const CardsContainer = () => {
     //estado local
     const [currentPage, setCurrentPage] = useState(1);

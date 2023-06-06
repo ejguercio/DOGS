@@ -50,7 +50,8 @@ const reducer = (state = initialState, { type, payload }) => {
             //trabajo con esa copia porque si uso el estado directo, el useEffect no me renderizaba los cambios en tiempo real
             ordered = (payload === "OrderA")? ordered.sort((a, b) => a.name.localeCompare(b.name))
                         :(payload === "OrderD")? ordered.sort((a, b) => b.name.localeCompare(a.name))
-                        : ordered.sort((a, b) => a.maxWeight - b.maxWeight)
+                        :(payload === "OrderByWeightA")? ordered.sort((a, b) => a.maxWeight - b.maxWeight)
+                        : ordered.sort((a, b) => b.maxWeight - a.maxWeight)
 
            return {
              ...state,

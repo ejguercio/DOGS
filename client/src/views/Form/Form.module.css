@@ -32,7 +32,9 @@
     height:40px;
     width: 80px;
     padding: 3px;
+    cursor: pointer;
     font-family: rowdies;
+    background-color: #B9D2D2;
     font-size: large;
     border-radius: 10px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);

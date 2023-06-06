@@ -12,4 +12,5 @@
     cursor: pointer;
     font-family: rowdies;
     background-color: #B9D2D2;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
 }

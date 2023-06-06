@@ -20,9 +20,10 @@ const FiltersBar = () => {
                 <option value="DbDogs">DB dogs</option>
             </select>
             <select className={css.select} onChange={handleOrder}>
-                <option value="OrderA">Order Asc.</option>
-                <option value="OrderD">Order Desc.</option>
-                <option value="OrderByWeight">Order by Weight</option>
+                <option value="OrderA">Order Asc. A-Z</option>
+                <option value="OrderD">Order Desc. Z-A</option>
+                <option value="OrderByWeightA">Order by Weight A</option>
+                <option value="OrderByWeightD">Order by Weight D</option>
             </select>
         </div>
     )
