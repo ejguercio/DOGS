@@ -37,12 +37,12 @@ const Form = () => {
 
     //SELECT OPTIONS
     const handleSelectChange = (event) => {
-        const selectedOptions = event.target.selectedOptions;
-        const uniqueOptions = new Set(selectedTemperaments);
-
-        for (let option of selectedOptions) {
-            uniqueOptions.add(option.value);
-        }
+        const selectedOptions = event.target.value; //opciones del select
+        const uniqueOptions = new Set(selectedTemperaments); //Set con opciones (sin repetir)
+        uniqueOptions.add(selectedOptions); //agrego al Set cada opcion
+        //for (let option of selectedOptions) {
+            
+        //}
         (Array.from(uniqueOptions).length <= 5) && setSelectedTemperaments(Array.from(uniqueOptions));//valido que se puedan agregar hasta 5
     };
     //INPUTS
@@ -95,9 +95,9 @@ const Form = () => {
             <span className={css.errors} >{errors.metrics}</span>
 
             <select className={css.select} multiple value={selectedTemperaments} onChange={handleSelectChange}>
-                {temperaments.map((option, index) => (
-                    <option key={index} value={option}>
-                        {option}
+                {temperaments.map((temp, index) => (
+                    <option key={index} value={temp}>
+                        {temp}
                     </option>
                 ))}
             </select>

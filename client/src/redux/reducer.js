@@ -52,7 +52,6 @@ const reducer = (state = initialState, { type, payload }) => {
                         :(payload === "OrderD")? ordered.sort((a, b) => b.name.localeCompare(a.name))
                         :(payload === "OrderByWeightA")? ordered.sort((a, b) => a.maxWeight - b.maxWeight)
                         : ordered.sort((a, b) => b.maxWeight - a.maxWeight)
-
            return {
              ...state,
              filteredDogs: ordered

@@ -2,8 +2,9 @@
     color: rgb(98, 163, 136);
     font-family: rowdies;
     font-size: 5rem;
-    margin: 10px;
+    margin: 20px auto;
     text-shadow: 3px 3px white;
+    width: 80%;
   }
 
 .button {

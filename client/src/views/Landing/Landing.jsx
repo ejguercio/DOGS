@@ -9,7 +9,7 @@ const Landing = () => {
     }
     return (
         <div className={css.landingImg}>
-            <p className={css.title} >Bienvenido a Henry Dogs, encontraras mucha informacion sobre perros</p>
+            <p className={css.title} >Bienvenido a Henry Dogs, encontrarás mucha información sobre perros</p>
 
             <button className={css.button} onClick={login}>Ingresar</button>
         </div>

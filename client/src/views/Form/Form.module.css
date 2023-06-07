@@ -4,7 +4,7 @@
     align-items: center;
     max-width: 600px;
     height: auto;
-    margin: 20px auto;
+    margin: 50px auto;
     padding: 10px;
     background-color: rgba(52, 52, 52, 0.8);
     border-radius: 10px;
@@ -34,8 +34,13 @@
     padding: 3px;
     cursor: pointer;
     font-family: rowdies;
+    border-style: none;
     background-color: #B9D2D2;
     font-size: large;
     border-radius: 10px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+}
+
+.button:hover{
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
 }

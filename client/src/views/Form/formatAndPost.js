@@ -12,7 +12,8 @@ export const formatAndPost = async ({ name, heightMin, heightMax, weightMin, wei
             temperament: selectedTemp
         }
         const endpoint = `http://localhost:3001/dogs`;
-        await axios.post(endpoint, newDog)
+        const response = await axios.post(endpoint, newDog)
+        alert(response.data)
     } catch (error) {
         alert(error.response.data.error)
     }

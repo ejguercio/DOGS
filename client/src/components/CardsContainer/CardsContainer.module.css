@@ -6,7 +6,7 @@
     height: auto;
     min-height: 650px;
     width: 60%;
-    margin: 20px auto;
+    margin: 40px auto;
 }
 
 .contPaged{
@@ -31,4 +31,9 @@
     border-style: none;
     margin: 10px;
     cursor: pointer;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+}
+
+.buttons:hover{
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
 }
