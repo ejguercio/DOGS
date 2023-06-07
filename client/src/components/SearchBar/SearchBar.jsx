@@ -12,7 +12,10 @@ const SearchBar = () => {
     };
 
     const searchByName=()=>{
-        dispatch(get_dogs_by_name(name))
+        const reLetters = /^[a-zA-Z]{2,18}$/; //entre 2 y 18 caracteres solo letras
+
+        (reLetters.test(name)===true)? dispatch(get_dogs_by_name(name))
+                                      : alert("formato de busqueda incorrecto")  
     };
     
 

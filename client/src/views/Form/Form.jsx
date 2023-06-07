@@ -56,11 +56,11 @@ const Form = () => {
     //BOTON CREATE 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
-        //si el objeto errors luego de validation() no tiene keys es porque no hay err //CONTINUAR
-        ((Object.keys(errors).length === 0) & (selectedTemperaments.length!==0)) && formatAndPost(inputsForm, selectedTemperaments)
-        
-        cleanForm(setInputsForm, setSelectedTemperaments);
+        //si el objeto errors luego de validation() no tiene errores y al menos seleccione 1 temp. envio el posteo la data del Form
+        if((Object.keys(errors).length === 0) & (selectedTemperaments.length!==0)) {
+            formatAndPost(inputsForm, selectedTemperaments)
+            cleanForm(setInputsForm, setSelectedTemperaments);
+        }       
     };
 
     const temperaments = useSelector(state => state.temperaments)//array con todos los temperamentos de la DB
