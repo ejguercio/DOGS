@@ -1,6 +1,6 @@
 //import arrDogs from "../utils/arrDogs";
 
-import { CLEAN_DETAIL, GET_DOGS, GET_DOGS_BY_NAME, GET_DOG_BY_ID, GET_TEMPERAMENTS, FILTER_DOGS, ORDER_DOGS } from "./actions-type";
+import { CLEAN_DETAIL, GET_DOGS, GET_DOGS_BY_NAME, GET_DOG_BY_ID, GET_TEMPERAMENTS, FILTER_ORIGIN, ORDER_DOGS, FILTER_TEMPERAMENT } from "./actions-type";
 
 const initialState = {
     allDogs: [],
@@ -39,28 +39,40 @@ const reducer = (state = initialState, { type, payload }) => {
                 dogsByName: payload,
                 dogsToRender: payload
             }
-        case FILTER_DOGS:
-            let filtered = [];
+        case FILTER_ORIGIN:
+            let byOrigin = [];
 
             if (payload === "AllDogs") {
-                filtered = state.allDogs; //ALL DOGS
+                byOrigin = state.allDogs; //ALL DOGS
                 state.dogsByName = [];
-            } else { //si hay una busqueda por nombre la signo sino filtro all
+            } else { //si hay una busqueda por nombre filtro sobre la misma sino filtro sobre allDogs
                 const dogsToFilter = state.dogsByName.length !== 0 ? state.dogsByName : state.allDogs; 
-                filtered = (payload === "DbDogs") ? dogsToFilter.filter(dog => dog.created) //DB DOGS
+                
+                byOrigin = (payload === "DbDogs") ? dogsToFilter.filter(dog => dog.created) //DB DOGS
                                                 : dogsToFilter.filter(dog => !dog.created); //API DOGS
             }
             return {
                 ...state,
-                dogsToRender: filtered
+                dogsToRender: byOrigin
             };
+        case FILTER_TEMPERAMENT:
+            let byTemp=[];    
+            for (const dog of state.dogsToRender){
+                if(dog.temperament!==undefined){
+                    (dog.temperament.includes(payload))&& byTemp.push(dog)
+                }
+            }
+        return{
+            ...state,
+            dogsToRender: byTemp
+        }
         case ORDER_DOGS:
             let ordered = [...state.dogsToRender]
             //trabajo con esa copia porque si uso el estado directo, el useEffect no me renderizaba los cambios en tiempo real
-            ordered = (payload === "OrderA") ? ordered.sort((a, b) => a.name.localeCompare(b.name))
-                : (payload === "OrderD") ? ordered.sort((a, b) => b.name.localeCompare(a.name))
-                    : (payload === "OrderByWeightA") ? ordered.sort((a, b) => a.maxWeight - b.maxWeight)
-                        : ordered.sort((a, b) => b.maxWeight - a.maxWeight)
+            ordered = (payload === "OrderA") ? ordered.sort((a, b) => a.name.localeCompare(b.name)) //ALFA ASCENDENTE
+                    : (payload === "OrderD") ? ordered.sort((a, b) => b.name.localeCompare(a.name)) //ALFA DESCENDENTE
+                    : (payload === "OrderByWeightA") ? ordered.sort((a, b) => a.maxWeight - b.maxWeight) //PESO ASCENDETE
+                    : ordered.sort((a, b) => b.maxWeight - a.maxWeight)  //PESO DESCENDENTE
             return {
                 ...state,
                 dogsToRender: ordered

@@ -38,11 +38,10 @@ const Form = () => {
     //SELECT OPTIONS
     const handleSelectChange = (event) => {
         const selectedOptions = event.target.value; //opciones del select
+        
         const uniqueOptions = new Set(selectedTemperaments); //Set con opciones (sin repetir)
         uniqueOptions.add(selectedOptions); //agrego al Set cada opcion
-        //for (let option of selectedOptions) {
-            
-        //}
+        
         (Array.from(uniqueOptions).length <= 5) && setSelectedTemperaments(Array.from(uniqueOptions));//valido que se puedan agregar hasta 5
     };
     //INPUTS

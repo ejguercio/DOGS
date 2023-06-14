@@ -1,4 +1,4 @@
-import { GET_DOGS, GET_DOG_BY_ID, CLEAN_DETAIL, GET_TEMPERAMENTS, GET_DOGS_BY_NAME, FILTER_DOGS, ORDER_DOGS } from "./actions-type";
+import { GET_DOGS, GET_DOG_BY_ID, CLEAN_DETAIL, GET_TEMPERAMENTS, GET_DOGS_BY_NAME, FILTER_ORIGIN,FILTER_TEMPERAMENT, ORDER_DOGS } from "./actions-type";
 import axios from "axios";
 
 export const get_dogs = () => {
@@ -54,9 +54,15 @@ export const get_dogs_by_name = (name) => {
     };
 };
 
-export const filter_dogs = (origin) => {
+export const filter_origin = (origin) => {
     return (dispatch) => {
-        return dispatch({ type: FILTER_DOGS, payload: origin })
+        return dispatch({ type: FILTER_ORIGIN, payload: origin })
+    }
+};
+
+export const filter_temp=(temperament)=>{
+    return (dispatch)=>{
+        return dispatch({type: FILTER_TEMPERAMENT, payload: temperament})
     }
 };
 
