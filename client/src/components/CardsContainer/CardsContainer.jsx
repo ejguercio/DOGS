@@ -2,17 +2,15 @@ import Card from "../Card/Card";
 import css from "./CardsContainer.module.css"
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-//import { useNavigate } from "react-router-dom";
 
 const CardsContainer = () => {
     //estado local
     const [currentPage, setCurrentPage] = useState(1);
     //estado global
     const dogsToRender = useSelector(state => state.dogsToRender);
-    //const navigate=useNavigate();
+
     useEffect(() => {
         setCurrentPage(1); // Reiniciar currentPage a 1 cuando dogsToRender cambie
-        //navigate(`/home/${currentPage}`)
     }, [dogsToRender]);
 
     //variables necesarias para el paginado
@@ -26,11 +24,9 @@ const CardsContainer = () => {
 
     const handlePrevious = () => {
         (currentPage > 1) && setCurrentPage(currentPage - 1)
-        //navigate(`/home/${currentPage - 1}`);
     };
     const handleNext = () => {
         (currentPage < totalPages) && setCurrentPage(currentPage + 1)
-        //navigate(`/home/${currentPage + 1}`);
     };
 
     return (

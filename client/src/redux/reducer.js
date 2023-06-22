@@ -1,5 +1,3 @@
-//import arrDogs from "../utils/arrDogs";
-
 import { CLEAN_DETAIL, GET_DOGS, GET_DOGS_BY_NAME, GET_DOG_BY_ID, GET_TEMPERAMENTS, FILTER_ORIGIN, ORDER_DOGS, FILTER_TEMPERAMENT } from "./actions-type";
 
 const initialState = {
