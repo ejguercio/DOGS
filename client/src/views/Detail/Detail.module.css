@@ -9,6 +9,7 @@
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
     width: 95%;
     height: auto;
+    min-height: 400px;
     max-width: 960px;
 }
 .containerInfo{
@@ -25,10 +26,22 @@
     margin: 10px;
 }
 .image{width: 90%;
-    max-width: 260px;
-    border-radius: 25%;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;}
+    max-width: 350px;
+    border-radius: 5px;
+    box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;}
 
 .button{
-   
+    font-family: rowdies;
+    background-color: #B9D2D2;;
+    cursor: pointer;
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+}
+.button:hover{
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
 }
