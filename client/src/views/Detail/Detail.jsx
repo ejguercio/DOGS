@@ -33,7 +33,7 @@ const Detail = () => {
             <div>
                 <img className={css.image} src={dog.image} alt='' />
             </div>
-            <button className={css.button} onClick={handleBack}>back</button>
+            <button className={css.button} onClick={handleBack}>BACK</button>
         </div>
     )
 };
