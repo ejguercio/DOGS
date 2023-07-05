@@ -8,9 +8,8 @@ const Landing = () => {
         navigate("/home");
     }
     return (
-        <div className={css.landingImg}>
+        <div className={css.landingPage}>
             <p className={css.title} >Bienvenido a Henry Dogs, encontrarás mucha información sobre perros</p>
-
             <button className={css.button} onClick={login}>Ingresar</button>
         </div>
     )

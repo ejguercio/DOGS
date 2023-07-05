@@ -7,7 +7,6 @@ const NavBar = () => {
 
     return (
         <div className={css.container}>
-            <NavLink className={css.links} to="/">ABOUT</NavLink>
             <NavLink className={css.links} to="/home">HOME</NavLink>
             <FiltersBar/>
             <SearchBar/>
