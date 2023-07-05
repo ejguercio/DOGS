@@ -1,14 +1,30 @@
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
 .title {
-    color: rgb(98, 163, 136);
-    font-family: rowdies;
-    font-size: 5rem;
-    margin: 20px auto;
-    text-shadow: 3px 3px white;
-    width: 80%;
-  }
+  
+  font-size: 36px;
+  padding: 10px 20px;
+  background-color: rgb(5, 94, 104);
+  color: rgb(185, 210, 210);
+  border-radius: 4px;
+  animation: fade-in 1.5s ease-in-out infinite alternate;
+}
+
 
 .button {
-    background-color: rgb(52, 52, 52);
+    background-color: rgb(5, 94, 104);
     color: rgb(185, 210, 210);
     padding: .3em;
     font-family: rowdies;
@@ -20,7 +36,7 @@
     transition:  0.3s ease;
   }
   .button:hover {
-    background-color: rgb(5, 94, 104);
+    background-color: rgb(52, 52, 52);
     color: white;
     transform: scale(1.05);
   }
