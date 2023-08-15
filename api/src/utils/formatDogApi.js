@@ -14,7 +14,9 @@ const formatDogApi = (arrDogs) =>
             weight: `${dog.weight.metric} kg`,
             maxWeight: maxWeight,
             life_span: dog.life_span,
-            image: `${URL_IMAGES}${dog.reference_image_id}.jpg`,
+            image: (dog.id == 15 || dog.id == 125 || dog.id == 212) ?
+                `${URL_IMAGES}${dog.reference_image_id}.png`
+                : `${URL_IMAGES}${dog.reference_image_id}.jpg`,
             temperament: dog.temperament,
             created: false
         }
