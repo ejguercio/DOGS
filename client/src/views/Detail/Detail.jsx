@@ -29,11 +29,12 @@ const Detail = () => {
                 <h2 className={css.info}>WEIGHT: {dog.weight}</h2>
                 <h2 className={css.info}>LIFE SPAN: {dog.life_span}</h2>
                 <h2 className={css.info}>TEMPERAMENT: {dog.temperament}</h2>
+                {(dog.created==true)?<button className={css.button} >DELETE DOG</button>:<></>}     
             </div>
             <div>
                 <img className={css.image} src={dog.image} alt='' />
             </div>
-            <button className={css.button} onClick={handleBack}>BACK</button>
+            <button className={css.button} onClick={handleBack}>BACK</button>  
         </div>
     )
 };
