@@ -64,7 +64,7 @@ const getAlldogs = async () => { //busco dogs en la api y en la base de datos y 
 const getDogByName = async (name) => {
     if (name.length < MIN_LONG_NAME) throw Error("el nombre a buscar deberia tener al menos 2 caracteres")
     //valido que se busque un nombre con al menos dos caracteres
-    
+
     const dbData = await Dog.findAll({
         where: {
             name: { [Op.iLike]: `%${name}%` } //Op.iLike busco tanto min como may y % % busco en todo value de name dicho nombre
@@ -84,4 +84,15 @@ const getDogByName = async (name) => {
     return [...dbDogs, ...apiDogs]
 };
 
-module.exports = { createDog, getById, getAlldogs, getDogByName }
+const deleteDogDB = async (idDog) => {
+    const dogToDelete = Dog.findByPk(idDog)
+    if (!dogToDelete) throw Error("Dog no encontrado")
+    await Dog.destroy({
+        where: {
+            id: idDog
+        }
+    });
+    return dogToDelete
+};
+
+module.exports = { createDog, getById, getAlldogs, getDogByName, deleteDogDB }
