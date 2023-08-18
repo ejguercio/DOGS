@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router';
 import { get_dog_by_id, clean_detail } from "../../redux/actions";
 import css from "./Detail.module.css";
+import { deleteDog } from "./deleteDog";
+import axios from "axios";
 
 
 const Detail = () => {
@@ -17,6 +19,11 @@ const Detail = () => {
     }, [detailId])
 
     const dog = useSelector(state => state.dog); //accedo al estado global donde guardo 1 dog buscado por id
+    
+    const handleDelete=async ()=>{
+        deleteDog(dog)
+        navigate(-1)
+    };
     const handleBack=()=>{
         navigate(-1)
     };
@@ -29,7 +36,7 @@ const Detail = () => {
                 <h2 className={css.info}>WEIGHT: {dog.weight}</h2>
                 <h2 className={css.info}>LIFE SPAN: {dog.life_span}</h2>
                 <h2 className={css.info}>TEMPERAMENT: {dog.temperament}</h2>
-                {(dog.created==true)?<button className={css.button} >DELETE DOG</button>:<></>}     
+                {(dog.created==true)?<button className={css.button} onClick={handleDelete}>DELETE DOG</button>:<></>}     
             </div>
             <div>
                 <img className={css.image} src={dog.image} alt='' />
