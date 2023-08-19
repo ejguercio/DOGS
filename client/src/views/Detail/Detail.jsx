@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router';
 import { get_dog_by_id, clean_detail } from "../../redux/actions";
 import css from "./Detail.module.css";
 import { deleteDog } from "./deleteDog";
-import axios from "axios";
-
 
 const Detail = () => {
     const { detailId } = useParams(); //obtengo la url dinamica que representa el id
