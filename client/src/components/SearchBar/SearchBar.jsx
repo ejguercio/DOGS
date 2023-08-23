@@ -2,22 +2,21 @@ import css from "./SearchBar.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { get_dogs_by_name } from "../../redux/actions";
-
+import Swal from 'sweetalert2'
 const SearchBar = () => {
     const [name, setName] = useState("")
-    const dispatch= useDispatch()
+    const dispatch = useDispatch()
 
     const handleChange = (event) => {
         setName(event.target.value);
     };
 
-    const searchByName=()=>{
+    const searchByName = () => {
         const reLetters = /^[a-zA-Z]{2,18}$/; //entre 2 y 18 caracteres solo letras
 
-        (reLetters.test(name)===true)? dispatch(get_dogs_by_name(name))
-                                      : alert("formato de busqueda incorrecto")  
+        (reLetters.test(name) === true) ? dispatch(get_dogs_by_name(name))
+            : Swal.fire("formato de busqueda incorrecto")
     };
-    
 
     return (
         <div className={css.container}>

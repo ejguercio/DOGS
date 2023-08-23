@@ -5,23 +5,23 @@ import { useEffect } from "react";
 
 const FiltersBar = () => {
     const dispatch = useDispatch();
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         dispatch(get_temperaments())
-    },[dispatch])
-    
+    }, [dispatch])
+
     const handleOrigin = (event) => {
         dispatch(filter_origin(event.target.value))
     };
-    const handleFilterTemp=(event)=>{
+    const handleFilterTemp = (event) => {
         dispatch(filter_temp(event.target.value))
         console.log(event.target.value)
     };
-    const handleOrder=(event)=>{
+    const handleOrder = (event) => {
         dispatch(order_dogs(event.target.value))
     };
-    
-    const temperaments= useSelector(state=>state.temperaments);
+
+    const temperaments = useSelector(state => state.temperaments);
     return (
         <div className={css.container}>
             <select className={css.select} onChange={handleOrigin}>
@@ -30,8 +30,8 @@ const FiltersBar = () => {
                 <option value="DbDogs">DB dogs</option>
             </select>
             <select className={css.select} onChange={handleFilterTemp}>
-            <option value="">Temperaments</option>       
-                {temperaments.map((temp, index)=>(
+                <option value="">Temperaments</option>
+                {temperaments.map((temp, index) => (
                     <option key={index} value={temp}>
                         {temp}
                     </option>
@@ -43,7 +43,7 @@ const FiltersBar = () => {
                 <option value="OrderByWeightA">Order by Weight A</option>
                 <option value="OrderByWeightD">Order by Weight D</option>
             </select>
-            
+
         </div>
     )
 }
