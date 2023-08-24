@@ -2,8 +2,7 @@ const { Dog, Temperament } = require("../db");
 const axios = require("axios");
 const formatDogDb = require("../utils/formatDogDb");
 const formatDogApi = require("../utils/formatDogApi");
-const { API_KEY } = process.env;
-const URL = `https://api.thedogapi.com/v1/breeds?${API_KEY}`;
+const URL = `https://api.thedogapi.com/v1/breeds`;
 const { Op } = require('sequelize');
 const MIN_LONG_NAME = 2;
 

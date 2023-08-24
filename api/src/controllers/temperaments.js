@@ -1,7 +1,6 @@
 const axios = require("axios");
 const { Temperament } = require('../db');
-const { API_KEY } = process.env;
-const URL = `https://api.thedogapi.com/v1/breeds?${API_KEY}`;
+const URL = `https://api.thedogapi.com/v1/breeds`;
 
 const loadTemperaments = async () => {
 
