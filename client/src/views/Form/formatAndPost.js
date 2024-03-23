@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 
 export const formatAndPost = async ({ name, heightMin, heightMax, weightMin, weightMax, lifeMin, lifeMax }, selectedTemp) => {
     try {
+        const URL_BASE = process.env.REACT_APP_SERVER
         const newDog = {
             name: name,
             height: `${heightMin} - ${heightMax}`,
@@ -12,8 +13,7 @@ export const formatAndPost = async ({ name, heightMin, heightMax, weightMin, wei
             life_span: `${lifeMin} - ${lifeMax}`,
             temperament: selectedTemp
         }
-        const endpoint = `http://localhost:3001/dogs`;
-        const response = await axios.post(endpoint, newDog)
+        const response = await axios.post(`${URL_BASE}dogs`, newDog)
         //alert(response.data)
         Swal.fire(`${response.data}`)
     } catch (error) {
